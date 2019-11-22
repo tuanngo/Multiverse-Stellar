@@ -3,17 +3,19 @@
 # Google Cloud Project name
 GCP_PROJECT_NAME="stellar-testnet"
 
+HISTORY_ARCHIVE_ACCOUNT_NAME="history-stellar"
+
 # Google Cloud service account that allow to access GCS buckets
-GCE_SERVICE_ACCOUNT="history-archive@"$GCP_PROJECT_NAME".iam.gserviceaccount.com"
+GCE_SERVICE_ACCOUNT="$HISTORY_ARCHIVE_ACCOUNT_NAME@"$GCP_PROJECT_NAME".iam.gserviceaccount.com"
 
 # Google Cloud Network name will be create during setup
-GCP_NETWORK_NAME="network-1"
+GCP_NETWORK_NAME="stellar-network"
 
 # GCS Bucket name of history archive to keep history data of stellar network
-HISTORY_ARCHIVE="stellar-testnet-history-archives"
+HISTORY_ARCHIVE="history-stellar"
 
 # GCS Bucket name of deployments script
-DEPLOYMENT_SCRIPTS="stellar-testnet-deployment"
+DEPLOYMENT_SCRIPTS="stellar-deployment"
 
 # ======================================================================================
 # FOR Core Validator configuration =====================================================
@@ -22,7 +24,7 @@ DEPLOYMENT_SCRIPTS="stellar-testnet-deployment"
 # VM name to display for each instance
 CORE_VAL_NAME_PREFIX="core-validator"
 
-STELLAR_NETWORK_PASSPHRASE="My-Private-Stellar-Testnet.March-2018"
+STELLAR_NETWORK_PASSPHRASE="Test SDF Network ; November 2019"
 
 # Specific machine size and capacity
 MACHINE_TYPE="n1-standard-1"
@@ -41,8 +43,8 @@ CORE_ZONE_3="asia-east1-c"
 
 # PSQL database information on every nodes
 PSQL_DBNAME="core"
-PSQL_USERNAME="stellaradmin"
-PSQL_PASSWORD="testnetadmin"
+PSQL_USERNAME="stellar"
+PSQL_PASSWORD="stellar"
 
 # ======================================================================================
 # FOR Horizon configuration ============================================================
@@ -58,9 +60,9 @@ CH_MACHINE_TYPE="n1-standard-1"
 
 CH_PSQL_CORE_DBNAME="core"
 CH_PSQL_HORIZON_DBNAME="horizon"
-CH_PSQL_USERNAME="stellaradmin"
-CH_PSQL_PASSWORD="admin123"
+CH_PSQL_USERNAME="stellar"
+CH_PSQL_PASSWORD="stellar"
 
-CH_GCE_SERVICE_ACCOUNT="hostory_archive@"$GCP_PROJECT_NAME".iam.gserviceaccount.com"
+CH_GCE_SERVICE_ACCOUNT="$HISTORY_ARCHIVE_ACCOUNT_NAME@"$GCP_PROJECT_NAME".iam.gserviceaccount.com"
 CLOUD_SQL_INSTANCE="stellar-testnet:asia-east1:horizon-db-1"
 

@@ -34,4 +34,15 @@ core-validator-3  compute.v1.instance  COMPLETED  []
 NAME          TYPE                 STATE      ERRORS  INTENT
 core-horizon  compute.v1.instance  COMPLETED  []
 
-### Install Stellar Core Validator
+### Post installation
+1. Check Stellar Core services running in normal states.
+2. Edit startup scripts of all GCE instance
+3.
+ ```sh
+#!/bin/bash
+cd /etc/stellar
+sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg force-scp
+sudo chown -R stellar:stellar /opt/stellar
+sleep 60s
+sudo systemctl start stellar-core
+```

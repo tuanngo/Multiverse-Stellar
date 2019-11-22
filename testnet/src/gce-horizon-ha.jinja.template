@@ -33,6 +33,8 @@ resources:
       - key: startup-script
         value: |
           #!/bin/bash
+          export DEBIAN_FRONTEND=noninteractive
+          DEBIAN_FRONTEND="noninteractive" sudo apt-get update -y && apt-get install -y tzdata
           wget -qO - https://apt.stellar.org/SDF.asc | sudo apt-key add -
           echo "deb https://apt.stellar.org/public stable/" | sudo tee -a /etc/apt/sources.list.d/SDF.list
           sudo apt-get update -y && sudo apt-get install -y stellar-horizon

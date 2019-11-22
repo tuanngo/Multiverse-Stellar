@@ -38,12 +38,12 @@ resources:
           sudo apt-get update -y && sudo apt-get install  -y stellar-core
           sudo mkdir /opt/stellar
           sudo chmod 777 -R /opt/stellar
-          sudo apt-get update -y
           sudo apt-get install -y postgresql postgresql-contrib
-          sleep 3s
+          sleep 5s
           cd /etc/stellar
           sudo gsutil cp gs://{{ properties['gcs-deployment-buckets'] }}/* /tmp
           sleep 5s
+          sudo service postgresql restart
           echo "ALTER USER {{ properties['psql-username'] }} WITH PASSWORD '{{ properties['psql-password'] }}';" >> /tmp/core-newdb.sql
           echo "grant all privileges on database {{ properties['psql-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/core-newdb.sql
           sudo -i -u postgres bash -c 'createdb {{ properties['psql-dbname'] }} && createuser {{ properties['psql-username'] }} && psql {{ properties['psql-dbname'] }} -f /tmp/core-newdb.sql'

@@ -38,8 +38,8 @@ resources:
           sudo apt-get update -y && sudo apt-get install -y stellar-horizon
           sudo mkdir /opt/stellar
           sudo chmod 777 -R /opt/stellar
-          sudo apt-get update -y
           sudo apt-get install -y postgresql-client
+          sleep 5s
           cd /opt
           sudo wget https://dl.google.com/cloudsql/cloud_sql_proxy.linux.amd64 -O cloud_sql_proxy
           sudo chmod +x cloud_sql_proxy

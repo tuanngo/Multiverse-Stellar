@@ -40,12 +40,12 @@ resources:
           sudo apt-get install -y stellar-horizon
           sudo mkdir /opt/stellar
           sudo chmod 777 -R /opt/stellar
-          sudo apt-get update -y
           sudo apt-get install -y postgresql postgresql-contrib
-          sleep 3s
+          sleep 5s
           cd /etc/stellar
           sudo gsutil cp gs://{{ properties['gcs-deployment-buckets'] }}/* /tmp
           sleep 5s
+          sudo service postgresql restart
           echo "ALTER USER {{ properties['psql-username'] }} WITH PASSWORD '{{ properties['psql-password'] }}';" >> /tmp/ch-newdb.sql
           echo "grant all privileges on database {{ properties['psql-core-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/ch-newdb.sql
           echo "grant all privileges on database {{ properties['psql-horizon-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/ch-newdb.sql

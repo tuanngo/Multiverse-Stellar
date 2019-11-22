@@ -43,6 +43,7 @@ resources:
           sleep 3s
           cd /etc/stellar
           sudo gsutil cp gs://{{ properties['gcs-deployment-buckets'] }}/* /tmp
+          sleep 5s
           echo "ALTER USER {{ properties['psql-username'] }} WITH PASSWORD '{{ properties['psql-password'] }}';" >> /tmp/core-newdb.sql
           echo "grant all privileges on database {{ properties['psql-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/core-newdb.sql
           sudo -i -u postgres bash -c 'createdb {{ properties['psql-dbname'] }} && createuser {{ properties['psql-username'] }} && psql {{ properties['psql-dbname'] }} -f /tmp/core-newdb.sql'
@@ -57,10 +58,11 @@ resources:
           sudo sed -i 's/<!PSQL_PASSWORD>/{{ properties['psql-password'] }}/g' /etc/stellar/stellar-core.cfg
           sudo chown -R stellar:stellar /etc/stellar/stellar-core.cfg
           cd /etc/stellar
-          sudo stellar-core --newdb --forcescp
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg new-db
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg force-scp
           sudo chown -R stellar:stellar /opt/stellar
           {% if index == 1 %}
-          sudo stellar-core --newhist gcloud
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg --newhist gcloud
           {% endif %}
           sudo systemctl start stellar-core
           sudo rm -rf /tmp/core-validator*.cfg

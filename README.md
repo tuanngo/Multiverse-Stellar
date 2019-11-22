@@ -20,5 +20,18 @@ HISTORY_ARCHIVE:             # Bucket name  for  history archive  (2)
 DEPLOYMENT_SCRIPTS:     # Bucket name  for  Deployment scripts  (3)
 
 **   run linux  (MacOs  sed throws 'bad flag in substitute command'  ...)
+
+```sh
 $ ./build.sh
 $ ./deploy.sh
+```
+
+NAME              TYPE                 STATE      ERRORS  INTENT
+core-validator-1  compute.v1.instance  COMPLETED  []
+core-validator-2  compute.v1.instance  COMPLETED  []
+core-validator-3  compute.v1.instance  COMPLETED  []
+
+NAME          TYPE                 STATE      ERRORS  INTENT
+core-horizon  compute.v1.instance  COMPLETED  []
+
+### Install Stellar Core Validator

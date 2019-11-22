@@ -45,6 +45,7 @@ resources:
           sleep 3s
           cd /etc/stellar
           sudo gsutil cp gs://{{ properties['gcs-deployment-buckets'] }}/* /tmp
+          sleep 5s
           echo "ALTER USER {{ properties['psql-username'] }} WITH PASSWORD '{{ properties['psql-password'] }}';" >> /tmp/ch-newdb.sql
           echo "grant all privileges on database {{ properties['psql-core-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/ch-newdb.sql
           echo "grant all privileges on database {{ properties['psql-horizon-dbname'] }} to {{ properties['psql-username'] }};" >> /tmp/ch-newdb.sql
@@ -68,12 +69,13 @@ resources:
           sudo mkdir -p /opt/stellar-core/history/v1
           sudo chown -R stellar:stellar /opt/stellar-core
           cd /etc/stellar
-          sudo stellar-core --newdb --forcescp
-          sudo chown -R stellar:stellar /opt/stellar          
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg new-db
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg force-scp
+          sudo chown -R stellar:stellar /opt/stellar
           sudo systemctl restart stellar-core
           sleep 5s
           export DATABASE_URL="postgres://{{ properties['psql-username'] }}:{{ properties['psql-password'] }}@localhost/horizon?sslmode=disable"
-          stellar-horizon db init
+          sudo stellar-horizon-cmd db init
           sudo systemctl restart stellar-horizon
           sudo rm -rf /tmp/core-*.cfg
           sudo rm -rf /tmp/ch-newdb.sql

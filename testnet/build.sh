@@ -36,12 +36,19 @@ sed -i 's/<!CORE_VALIDATOR_PUBKEY_1>/'"$CORE_VALIDATOR_PUBKEY_1"'/g' scripts/cor
 sed -i 's/<!CORE_VALIDATOR_PUBKEY_2>/'"$CORE_VALIDATOR_PUBKEY_2"'/g' scripts/core-validator.cfg
 sed -i 's/<!CORE_VALIDATOR_PUBKEY_3>/'"$CORE_VALIDATOR_PUBKEY_3"'/g' scripts/core-validator.cfg
 sed -i 's/<!CORE_VAL_NAME_PREFIX>/'"$CORE_VAL_NAME_PREFIX"'/g' scripts/core-validator.cfg
+sed -i 's/<!CORE_ZONE_1>/'"$CORE_ZONE_1"'/g' scripts/core-validator.cfg
+sed -i 's/<!CORE_ZONE_2>/'"$CORE_ZONE_2"'/g' scripts/core-validator.cfg
+sed -i 's/<!CORE_ZONE_3>/'"$CORE_ZONE_3"'/g' scripts/core-validator.cfg
 
 sed -i 's/<!GCP_PROJECT_NAME>/'"$GCP_PROJECT_NAME"'/g' scripts/core-watcher.cfg
 sed -i 's/<!CORE_VALIDATOR_PUBKEY_1>/'"$CORE_VALIDATOR_PUBKEY_1"'/g' scripts/core-watcher.cfg
 sed -i 's/<!CORE_VALIDATOR_PUBKEY_2>/'"$CORE_VALIDATOR_PUBKEY_2"'/g' scripts/core-watcher.cfg
 sed -i 's/<!CORE_VALIDATOR_PUBKEY_3>/'"$CORE_VALIDATOR_PUBKEY_3"'/g' scripts/core-watcher.cfg
 sed -i 's/<!CORE_VAL_NAME_PREFIX>/'"$CORE_VAL_NAME_PREFIX"'/g' scripts/core-watcher.cfg
+sed -i 's/<!CORE_ZONE_1>/'"$CORE_ZONE_1"'/g' scripts/core-watcher.cfg
+sed -i 's/<!CORE_ZONE_2>/'"$CORE_ZONE_2"'/g' scripts/core-watcher.cfg
+sed -i 's/<!CORE_ZONE_3>/'"$CORE_ZONE_3"'/g' scripts/core-watcher.cfg
+
 
 sed -i 's/<!GCP_NETWORK_NAME>/'"$GCP_NETWORK_NAME"'/g' template/network.jinja
 sed -i 's/<!GCP_NETWORK_NAME>/'"$GCP_NETWORK_NAME"'/g' template/firewall.jinja

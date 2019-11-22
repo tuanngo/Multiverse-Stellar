@@ -68,7 +68,7 @@ resources:
           sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg force-scp
           sudo chown -R stellar:stellar /opt/stellar
           {% if index == 1 %}
-          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg --new-hist gcloud
+          sudo -u stellar stellar-core --conf /etc/stellar/stellar-core.cfg new-hist gcloud
           {% endif %}
           sudo systemctl start stellar-core
           sudo rm -rf /tmp/core-validator*.cfg

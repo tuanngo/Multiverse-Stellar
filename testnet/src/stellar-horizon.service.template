@@ -1,6 +1,5 @@
 [Unit]
 Description=SDF - stellar-horizon
-After=stellar-core.service
 Before=multi-user.target
 #PartOf=stellar.service
 

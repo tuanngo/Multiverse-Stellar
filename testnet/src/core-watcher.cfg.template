@@ -8,6 +8,7 @@
 # NODE_SEED="<!NODE_SEED>" # remove this if you are non-validating
 NODE_IS_VALIDATOR=false
 
+LOG_FILE_PATH="/var/log/stellar/stellar-core.log"
 BUCKET_DIR_PATH="/opt/stellar/buckets"
 
 PUBLIC_HTTP_PORT=true
